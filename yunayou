@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>人数表示</title>
+
+<style>
+body{
+text-align:center;
+font-family:sans-serif;
+margin-top:100px;
+}
+.number{
+font-size:70px;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>現在の参加人数</h1>
+<div class="number" id="count">読み込み中...</div>
+
+<script>
+const sheetID = "1S-rKuwv2vhGluHiLgugvq2obpgkDBZmkmoHexwqmOMI";
+const sheetName = "参加状況";
+
+fetch(`https://opensheet.elk.sh/${sheetID}/${sheetName}`)
+.then(res => res.json())
+.then(data => {
+document.getElementById("count").innerText =
+data[0].I + "人";
+});
+</script>
+
+</body>
+</html>
